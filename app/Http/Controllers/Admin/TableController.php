@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\TableModel;
 
 class TableController extends Controller
 {
@@ -14,7 +15,9 @@ class TableController extends Controller
      */
     public function index()
     {
-        return view('admin.tables.index');
+        $table = TableModel::all();
+        return view('admin.tables.index', compact('table'));
+        
     }
 
     /**
