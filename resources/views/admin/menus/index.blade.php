@@ -6,8 +6,15 @@
     </x-slot>
 
     <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+
+                {{-- Button --}}
+                <div class="flex justify-end  pb-6">
+                    <a href="{{ route('admin.menus.create') }}"
+                        class="px-4 py-2 text-white bg-indigo-500 hover:bg-indigo-700 rounded-lg"> New Menu</a>
+                </div>
+
+
                 <div class="bg-white overflow-hidden shadow-md sm:rounded-lg">
                     
                     <div class="overflow-x-auto relative">
@@ -79,6 +86,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        
     </div>
 </x-admin-layout>
