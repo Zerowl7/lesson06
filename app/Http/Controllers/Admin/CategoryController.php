@@ -5,6 +5,11 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\CategoryModel;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategorySoreRequest;
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Str;
+
+
 
 class CategoryController extends Controller
 {
@@ -35,9 +40,18 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CategorySoreRequest $request)
     {
-        //
+        $image = $request->file('image')->store('/app/public/categories');
+
+        // Создаем в модели
+        CategoryModel::create([
+            'name' => $request->name,
+            'description' => $request->description,
+            'image'=> $image
+        ]);
+
+        return redirect()->route('admin.categories.index');
     }
 
     /**
