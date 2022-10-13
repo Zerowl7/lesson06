@@ -33,9 +33,7 @@
                                 <th scope="col" class="py-3 px-6">
                                     Price
                                 </th>
-                                <th scope="col" class="py-3 px-6">
-                                    Description
-                                </th>
+                                
 
 
 
