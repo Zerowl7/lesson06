@@ -16,8 +16,9 @@
         {{-- Form --}}
         <div class="bg-slate-700 p-4 rounded-lg">
 
-            <form method="POST" action=" {{ route('admin.reservations.store') }} " >
+            <form method="POST" action=" {{ route('admin.reservations.update', $reservation->id ) }} " >
                 @csrf
+                @method('PUT')
 
 
 
@@ -26,7 +27,7 @@
                 <div class="mb-6">
                     <label for="first_name"
                         class="block mb-2 text-sm font-medium text-white dark:text-gray-300">First Name</label>
-                    <input type="name"
+                    <input type="name" value="{{ $reservation->first_name }}"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         name="first_name" placeholder="Maxim" required>
                 </div>
@@ -36,7 +37,7 @@
                 <div class="mb-6">
                     <label for="last_name"
                         class="block mb-2 text-sm font-medium text-white dark:text-gray-300">Last Name</label>
-                    <input type="name"
+                    <input type="name" value="{{ $reservation->last_name }}"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         name="last_name" placeholder="Minaev" required>
                 </div>
@@ -46,7 +47,7 @@
                 <div class="mb-6">
                     <label for="email"
                         class="block mb-2 text-sm font-medium text-white dark:text-gray-300">Email</label>
-                    <input type="email"
+                    <input type="email" value="{{ $reservation->email }}"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         name="email" placeholder="maximminaev7@gmail.com" required>
                 </div>
@@ -59,7 +60,7 @@
                 <div class="mb-6">
                     <label for="tel_number"
                         class="block mb-2 text-sm font-medium text-white dark:text-gray-300">Phone Number</label>
-                    <input type="text"
+                    <input type="text" value="{{ $reservation->tel_number }}"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         name="tel_number" placeholder="+79682632507" required>
                 </div>
@@ -69,7 +70,7 @@
                 <div class="mb-6">
                     <label for="res_date"
                         class="block mb-2 text-sm font-medium text-white dark:text-gray-300">Resetvation Date</label>
-                    <input type="datetime-local" id="res_date"
+                    <input type="datetime-local" id="res_date" value="{{ $reservation->res_date }}"
                         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
                         name="res_date" required>
                 </div>
@@ -82,7 +83,7 @@
                     <label for="guest" class="block text-sm font-medium text-white"> Guest number </label>
                     <div class="mt-1">
                         <input type="number" min="0.00" max="10000.00" step="1" id="guest"
-                            name="guest_number"
+                            name="guest_number" value="{{ $reservation->table_id }}"
                             class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                     </div>
 

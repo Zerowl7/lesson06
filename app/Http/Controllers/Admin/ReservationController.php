@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ResStoreRequest;
 use Illuminate\Http\Request;
 use App\Models\ReservationModel;
+use App\Models\TableModel;
 
 class ReservationController extends Controller
 {
@@ -15,8 +17,8 @@ class ReservationController extends Controller
      */
     public function index()
     {
-        $reservation = ReservationModel::all();
-        return view('admin.reservation.index', compact('reservation'));
+        $reservations = ReservationModel::all();
+        return view('admin.reservation.index', compact('reservations'));
     }
 
     /**
@@ -26,7 +28,8 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        return view('admin.reservation.create');
+        $tables = TableModel::all();
+        return view('admin.reservation.create', compact('tables'));
     }
 
     /**
@@ -35,10 +38,20 @@ class ReservationController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ResStoreRequest $request)
     {
-        //
+        ReservationModel::create($request->validated());
+        return redirect()->route('admin.reservations.index');
     }
+
+    // 'first_name'=> $request->first_name,
+    // 'last_name'=> $request->last_name,
+    // 'email'=> $request->email,
+    // 'res_date'=> $request->res_date,
+    // 'tel_number'=> $request->tel_number,
+    // 'table_id'=> $request->table_id,
+    // 'guest_number'=> $request->guest_number,
+
 
     /**
      * Display the specified resource.
@@ -57,9 +70,10 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(ReservationModel $reservation)
     {
-        //
+        $tables = TableModel::all();
+        return view('admin.reservation.edit', compact('reservation', 'tables'));
     }
 
     /**
@@ -69,9 +83,11 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ResStoreRequest $request, ReservationModel $reservation)
     {
-        //
+        $reservation->update($request->validated());
+
+        return redirect()->route('admin.reservations.index');
     }
 
     /**
@@ -80,8 +96,9 @@ class ReservationController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(ReservationModel $reservation)
     {
-        //
+        $reservation->delete();
+        return redirect()->route('admin.reservations.index');
     }
 }
