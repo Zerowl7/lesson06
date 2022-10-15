@@ -16,7 +16,7 @@
         {{-- Form --}}
         <div class="bg-slate-700 p-4 rounded-lg">
 
-            <form method="POST" action=" {{ route('admin.reservations.update', $reservation->id ) }} " >
+            <form method="POST" action=" {{ route('admin.reservations.update', $reservation->id) }} ">
                 @csrf
                 @method('PUT')
 
@@ -25,21 +25,29 @@
                 {{-- First_Name --}}
 
                 <div class="mb-6">
-                    <label for="first_name"
-                        class="block mb-2 text-sm font-medium text-white dark:text-gray-300">First Name</label>
+                    <label for="first_name" class="block mb-2 text-sm font-medium text-white dark:text-gray-300">First
+                        Name</label>
                     <input type="name" value="{{ $reservation->first_name }}"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                        name="first_name" placeholder="Maxim" required>
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light @error('name') border-red-400 @enderror"
+                        name="first_name" placeholder="Maxim">
+
+                    @error('first_name')
+                        <div class="text-sm text-red-400 ">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- Last_Name --}}
 
                 <div class="mb-6">
-                    <label for="last_name"
-                        class="block mb-2 text-sm font-medium text-white dark:text-gray-300">Last Name</label>
+                    <label for="last_name" class="block mb-2 text-sm font-medium text-white dark:text-gray-300">Last
+                        Name</label>
                     <input type="name" value="{{ $reservation->last_name }}"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                        name="last_name" placeholder="Minaev" required>
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light @error('name') border-red-400 @enderror"
+                        name="last_name" placeholder="Minaev">
+
+                    @error('last_name')
+                        <div class="text-sm text-red-400 ">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- Email --}}
@@ -48,21 +56,29 @@
                     <label for="email"
                         class="block mb-2 text-sm font-medium text-white dark:text-gray-300">Email</label>
                     <input type="email" value="{{ $reservation->email }}"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                        name="email" placeholder="maximminaev7@gmail.com" required>
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light @error('name') border-red-400 @enderror"
+                        name="email" placeholder="maximminaev7@gmail.com">
+
+                    @error('email')
+                        <div class="text-sm text-red-400 ">{{ $message }}</div>
+                    @enderror
                 </div>
 
-                
+
 
 
                 {{-- Phone Number --}}
 
                 <div class="mb-6">
-                    <label for="tel_number"
-                        class="block mb-2 text-sm font-medium text-white dark:text-gray-300">Phone Number</label>
+                    <label for="tel_number" class="block mb-2 text-sm font-medium text-white dark:text-gray-300">Phone
+                        Number</label>
                     <input type="text" value="{{ $reservation->tel_number }}"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                        name="tel_number" placeholder="+79682632507" required>
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light @error('name') border-red-400 @enderror"
+                        name="tel_number" placeholder="+79682632507">
+
+                    @error('tel_number')
+                        <div class="text-sm text-red-400 ">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- Resetvation Date --}}
@@ -71,8 +87,12 @@
                     <label for="res_date"
                         class="block mb-2 text-sm font-medium text-white dark:text-gray-300">Resetvation Date</label>
                     <input type="datetime-local" id="res_date" value="{{ $reservation->res_date }}"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                        name="res_date" required>
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light @error('name') border-red-400 @enderror"
+                        name="res_date">
+
+                    @error('res_date')
+                        <div class="text-sm text-red-400 ">{{ $message }}</div>
+                    @enderror
                 </div>
 
 
@@ -86,6 +106,10 @@
                             name="guest_number" value="{{ $reservation->table_id }}"
                             class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
                     </div>
+
+                    @error('guest_number')
+                        <div class="text-sm text-red-400 ">{{ $message }}</div>
+                    @enderror
 
                 </div>
 
@@ -103,7 +127,7 @@
 
                 </div>
 
-                
+
 
 
 

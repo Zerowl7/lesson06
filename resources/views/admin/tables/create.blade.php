@@ -27,8 +27,12 @@
                     <label for="name"
                         class="block mb-2 text-sm font-medium text-white dark:text-gray-300">Name</label>
                     <input type="name"
-                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                        name="name" placeholder="Maxim Minaev" required>
+                        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light @error('name') border-red-400 @enderror"
+                        name="name" placeholder="Maxim Minaev" >
+
+                        @error('name')
+                        <div class="text-sm text-red-400 ">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 {{-- Guest number --}}
@@ -38,8 +42,12 @@
                     <div class="mt-1">
                         <input type="number" min="0.00" max="10000.00" step="1" id="guest"
                             name="guest_number"
-                            class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
+                            class="block w-full appearance-none bg-white border border-gray-400 rounded-md py-2 px-3 text-base leading-normal transition duration-150 ease-in-out sm:text-sm sm:leading-5 @error('name') border-red-400 @enderror" />
                     </div>
+
+                    @error('guest_number')
+                        <div class="text-sm text-red-400 ">{{ $message }}</div>
+                    @enderror
 
                 </div>
 
