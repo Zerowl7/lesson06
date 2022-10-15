@@ -56,7 +56,7 @@ class MenuController extends Controller
 
 
         }
-        return redirect()->route('admin.menus.index');
+        return redirect()->route('admin.menus.index')->with('success', 'Menu created successfuly');
     }
 
     /**
@@ -116,7 +116,7 @@ class MenuController extends Controller
         }
 
 
-        return redirect()->route('admin.menus.index');
+        return redirect()->route('admin.menus.index')->with('success', 'Menu updated successfuly');
     }
 
     /**
@@ -129,6 +129,6 @@ class MenuController extends Controller
     {
         Storage::delete($menu->image);
         $menu->delete();
-        return redirect()->route('admin.menus.index');
+        return redirect()->route('admin.menus.index')->with('danger', 'Menu deleted successfuly');
     }
 }

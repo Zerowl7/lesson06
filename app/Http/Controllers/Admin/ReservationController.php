@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Enums\TableStatus;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ResStoreRequest;
 use Illuminate\Http\Request;
@@ -28,7 +29,7 @@ class ReservationController extends Controller
      */
     public function create()
     {
-        $tables = TableModel::all();
+        $tables = TableModel::where('status', TableStatus::AVAILABLE)->get();
         return view('admin.reservation.create', compact('tables'));
     }
 
@@ -41,7 +42,7 @@ class ReservationController extends Controller
     public function store(ResStoreRequest $request)
     {
         ReservationModel::create($request->validated());
-        return redirect()->route('admin.reservations.index');
+        return redirect()->route('admin.reservations.index')->with('success', 'Reservation created successfuly');
     }
 
     // 'first_name'=> $request->first_name,
@@ -87,7 +88,7 @@ class ReservationController extends Controller
     {
         $reservation->update($request->validated());
 
-        return redirect()->route('admin.reservations.index');
+        return redirect()->route('admin.reservations.index')->with('success', 'Reservation updated successfuly');
     }
 
     /**
@@ -99,6 +100,6 @@ class ReservationController extends Controller
     public function destroy(ReservationModel $reservation)
     {
         $reservation->delete();
-        return redirect()->route('admin.reservations.index');
+        return redirect()->route('admin.reservations.index')->with('danger', 'Reservation deleted successfuly');
     }
 }
