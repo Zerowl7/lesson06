@@ -12,12 +12,12 @@ In this project, I made a fully functioning restaurant website
 2. Menu
 3. Booking
 4. Categories
--**I also set up controllers for each model and made blades.**
--**All tables are added to the admin panel with the GRUD method**
--**Created a relationship Menu and Categories of many-to-many table**
--**Set up validation, flash alerts, as well as rules for booking by time and date via Rules**
--**Applied Enums to choose the location and status of the table**
--**I made a frontend and completed all the interconnections.**
+- **I also set up controllers for each model and made blades.**
+- **All tables are added to the admin panel with the GRUD method**
+- **Created a relationship Menu and Categories of many-to-many table**
+- **Set up validation, flash alerts, as well as rules for booking by time and date via Rules**
+- **Applied Enums to choose the location and status of the table**
+- **I made a frontend and completed all the interconnections.**
 
 ## Project screenshot
 ## Admin panel
