@@ -26,6 +26,7 @@ In this project, I made a fully functioning restaurant website
 
 
 ## Frontend
+![image](https://user-images.githubusercontent.com/67556607/196048224-654100fa-940a-48c9-a6c4-3c1337296471.png)
 ![image](https://user-images.githubusercontent.com/67556607/196048109-d6cb690f-00fa-48a9-924f-554f94c02b80.png)
 ![image](https://user-images.githubusercontent.com/67556607/196048132-1e84fe29-a008-43dd-b374-6890a79f2296.png)
 ![image](https://user-images.githubusercontent.com/67556607/196048140-8bad7a23-1c67-48c2-9460-4e290d16f1bc.png)
