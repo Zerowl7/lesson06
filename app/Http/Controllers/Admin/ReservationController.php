@@ -8,6 +8,7 @@ use App\Http\Requests\ResStoreRequest;
 use Illuminate\Http\Request;
 use App\Models\ReservationModel;
 use App\Models\TableModel;
+use Illuminate\Support\Carbon;
 
 class ReservationController extends Controller
 {
@@ -41,17 +42,22 @@ class ReservationController extends Controller
      */
     public function store(ResStoreRequest $request)
     {
+        $table = TableModel::findOrFail($request->table_id);
+        if($request->guest_number > $table->guest_number)
+            return back()->with('warning', 'Please choose the table base on guests');
+
+            // $request_date = Carbon::parse($request->res_date);
+            // foreach ($table->reservations as $res){
+            //    if($res->res_date->format('Y-m-d') == $request_date->format('Y-m-d')){
+            //         return back()->with('warning', 'This table is reserved in this date');
+            //     }
+            // }
+            
         ReservationModel::create($request->validated());
         return redirect()->route('admin.reservations.index')->with('success', 'Reservation created successfuly');
     }
 
-    // 'first_name'=> $request->first_name,
-    // 'last_name'=> $request->last_name,
-    // 'email'=> $request->email,
-    // 'res_date'=> $request->res_date,
-    // 'tel_number'=> $request->tel_number,
-    // 'table_id'=> $request->table_id,
-    // 'guest_number'=> $request->guest_number,
+   
 
 
     /**
